@@ -19,7 +19,6 @@ async function handlePageLoad() {
     // *** Use the id to get this dog (async, so you need to "await"!)
     dog = await getDog(id);
     // and assign to "dog" variable
-    console.log(dog);
 
     // if (!dog) window.location = '/';
 
