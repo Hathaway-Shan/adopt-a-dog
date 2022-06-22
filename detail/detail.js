@@ -17,11 +17,11 @@ async function handlePageLoad() {
     if (!id) window.location = '/';
 
     // *** Use the id to get this dog (async, so you need to "await"!)
-    dog = await getDog();
+    dog = await getDog(id);
     // and assign to "dog" variable
+    console.log(dog);
 
-
-    if (!dog) window.location = '/';
+    // if (!dog) window.location = '/';
 
     display();
 }

@@ -4,14 +4,7 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function getDogs() {
     
-    const response = await client
-    // *** from the dogs table, select all items
-        .from('dogs')
-        .select(`
-        id,
-        name,
-        breed
-        `);
+    const response = await client.from('dogs').select(`id, name, breed`);
     // but you only need id, name, and breed columns
 
 
@@ -21,20 +14,11 @@ export async function getDogs() {
 
 export async function getDog(id) {
     // *** from the dogs table, select a >>single<< dog who has the >>matching id<<
-    const response = await client
-        .from('dogs')
-    //select selects all the columns and rows of the dogs
-        .select(`
-        id,
-        name,
-        description,
-        imageUrl:image_url
-        `)
-    //this is the code that specifies we pull out a singe entity that matches id
-        .match({ id: id })
-        .single();
+    const response = await client.from('dogs').select(`*`).match({ id: id }).single();
     // return all columns
     
     // and return the response
     return response.data;
 }
+//select selects all the columns and rows of the dogs
+//this is the code that specifies we pull out a singe entity that matches id
